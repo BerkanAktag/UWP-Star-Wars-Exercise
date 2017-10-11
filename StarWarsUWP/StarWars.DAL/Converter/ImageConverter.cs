@@ -18,9 +18,10 @@ namespace StarWars.DAL.Converter
 
             try
             {
-                BitmapImage img = new BitmapImage();
-                String changeValue = value.ToString().Replace(" ", "_");
-                img.UriSource = new Uri("/StarWarsUWP.App;component/Assets/Posters/"+changeValue+".jpg",UriKind.Relative);
+                
+                String changeValue = value.ToString().Replace(" ", "_").ToLower() + ".jpg";
+
+                BitmapImage img = new BitmapImage(new Uri("ms-appx://StarWarsUWP.App/Assets/Posters/" + changeValue));
                 return img;
             }
             catch (Exception e)

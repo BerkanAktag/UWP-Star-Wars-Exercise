@@ -52,13 +52,15 @@ namespace StarWarsUWP
                 MovieTitleTextBlock.Text = selectedMovie.Title;
                 DirectorTextBlock.Text = selectedMovie.Director;
                 ProducerTextBlock.Text = selectedMovie.Producer;
-                MovieReleaseDateTextBlock.Text = selectedMovie.ReleaseDate.ToString();
+
+                //MovieReleaseDateTextBlock.Text = selectedMovie.ReleaseDate.ToString();
 
                 String changeValue = selectedMovie.Title.ToString().Replace(" ", "_").ToLower() + ".jpg";
 
                 BitmapImage img = new BitmapImage(new Uri("ms-appx://StarWarsUWP.App/Assets/Posters/" + changeValue));
 
                 MovieImage.Source = img;
+                DetailStackOanel.DataContext = selectedMovie;
             }
         }
 

@@ -5,15 +5,21 @@
     xmlns:local="using:StarWarsUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:StarWars.DAL.Converter"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="MovieGrid">
-        <RelativePanel HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="920" Margin="94,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="457*"/>
+        </Grid.ColumnDefinitions>
+
+        <RelativePanel HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="920" Margin="94,0,0,0" Grid.ColumnSpan="2">
             <TextBlock Text="{Binding Path=Title,Mode=OneWay}" Margin="25,4,-116,36" Name="MovieTitleTextBlock" FontSize="26"/>
-            <Image Height="500" Width="400" Margin="9,-31,21.4,61.4" Name="MovieImage" RelativePanel.Below="MovieTitleTextBlock" Source="{Binding Title, Converter={StaticResource LocalImageConverter}}" />
-            <StackPanel HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" RelativePanel.RightOf="MovieImage" Margin="-9.4,75,-11.8,-4.6" Width="350">
+            <Image Height="500" Width="400" Margin="21,-31.4,9.4,61.8" Name="MovieImage" RelativePanel.Below="MovieTitleTextBlock" Source="{Binding Title, Converter={StaticResource LocalImageConverter}}" />
+            <StackPanel HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Name="DetailStackOanel" RelativePanel.RightOf="MovieImage" Margin="-1.4,75,-19.8,-4.6" Width="350">
                 <TextBlock Text="Release Date" Margin="-2,0,2.4,0" />
-                <TextBlock Text="{Binding Path=ReleaseDate,Mode=OneWay}" Name="MovieReleaseDateTextBlock" Margin="-2,0,2.4,0" FontSize="20" />
+                <TextBlock Text="{Binding Path=ReleaseDate,Converter={StaticResource DateToStringConverter}}" Name="MovieReleaseDateTextBlock" Margin="-2,0,2.4,0" FontSize="20" />
                 <TextBlock Text="Director" Margin="-2,0,2.4,0"></TextBlock>
                 <TextBlock Text="{Binding Path=Director,Mode=OneWay}" Name="DirectorTextBlock" Margin="-2,0,2.4,0" FontSize="20" />
                 <TextBlock Text="Producer" Margin="-2,0,2.4,0"/>
@@ -22,13 +28,13 @@
 
 
         </RelativePanel>
-        <ListView HorizontalAlignment="Left" Height="603" Margin="10,10,0,0" x:Name="EpisodesListView" VerticalAlignment="Top"
-                      Width="84" RenderTransformOrigin="0.504,0.336" RelativePanel.LeftOf="MovieImage" SelectionChanged="EpisodesListView_SelectionChanged">
+        <ListView HorizontalAlignment="Left" Height="603" Margin="4,10,0,0" x:Name="EpisodesListView" VerticalAlignment="Top"
+                      Width="109" RenderTransformOrigin="0.504,0.336" RelativePanel.LeftOf="MovieImage" SelectionChanged="EpisodesListView_SelectionChanged" Grid.ColumnSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Episode " />
-                        <TextBlock Text="{Binding EpisodeId}" Foreground="Blue"></TextBlock>
+                        <TextBlock Text="Episode" Margin="5,0,0,0" />
+                        <TextBlock Text="{Binding EpisodeId,Converter={StaticResource LocalRomanConverter}}" Foreground="Blue"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

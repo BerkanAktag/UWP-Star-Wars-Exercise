@@ -9,7 +9,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <converter:ImageConverter x:Key="LocalImageConverter"></converter:ImageConverter>
-            
+            <converter:DateFormatConverter x:Key="DateToStringConverter"></converter:DateFormatConverter>
+            <converter:RomanConverter x:Key="LocalRomanConverter"></converter:RomanConverter>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
