@@ -7,7 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="-120,0,0,0" Name="MovieGrid">
+        <RelativePanel HorizontalAlignment="Left" Height="640" Margin="0" VerticalAlignment="Top" Width="1144">
+            <TextBlock Text="Movie Title" Margin="20" Name="MovieTitleTextBlock" />
+            <Image Height="500" Width="400" Margin="15" Name="MovieImage" RelativePanel.Below="MovieTitleTextBlock" Source="Assets/StoreLogo.png" />
+            <StackPanel HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" RelativePanel.RightOf="MovieImage" Margin="10,70,10,10" Width="350">
+                <TextBlock Text="Release Date" />
+                <TextBlock Text="{Binding ReleaseDate}" Name="MovieReleaseDateTextBlock" />
+                <TextBlock Text="Director"></TextBlock>
+                <TextBlock Text="{Binding Director}" Name="DirectorTextBlock" />
+                <TextBlock Text="Producer"/>
+                <TextBlock Text="{Binding Producer}" Name="ProducerTextBlock" />
+            </StackPanel>
+            
+           
+        </RelativePanel>
 
     </Grid>
 </Page>
