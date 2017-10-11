@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="Movie.cs" />
     <Compile Include="Planet.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\StarWars.Domain.rd.xml" />
   </ItemGroup>

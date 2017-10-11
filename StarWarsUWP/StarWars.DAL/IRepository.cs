@@ -10,5 +10,6 @@ namespace StarWars.DAL
     public interface IRepository
     {
         Movie GetMobieByUrl(string url);
+        IList<Movie> GetAllMovies();
     }
 }
