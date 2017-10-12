@@ -27,7 +27,7 @@
                 <TextBlock Text="{Binding Path=Producer,Mode=OneWay}" Name="ProducerTextBlock" Margin="2,0,-1.6,0" FontSize="20" />
                 <TextBlock Text="Rating" FontSize="12" Margin="-2,0,2.4,0"/>
                 <TextBlock Text="{Binding Rating, Mode=OneWay}" x:Name="RatingTextBlock" Margin="2,0,-1.6,0" FontSize="20" />
-                <rating:RatingControl ItemsCount="10" Value="{Binding Rating}" Name="MovieRatingControl"/>
+                <rating:RatingControl ItemsCount="10" Value="{Binding Rating,Mode=TwoWay}" Name="MovieRatingControl"/>
             </StackPanel>
             <Button Content="Down" Name="DownButton" HorizontalAlignment="Left" Height="32.7999992370605" VerticalAlignment="Top" Width="65.5999984741211" Margin="426,510,-426.4,-510.2" Click="DownButton_Click" />
             <Button Content="Up" Name="UpButton" HorizontalAlignment="Left" Height="32.7999992370605" VerticalAlignment="Top" Width="65.5999984741211" Margin="514,510,-515.2,-510.2" Click="UpButton_Click" />
