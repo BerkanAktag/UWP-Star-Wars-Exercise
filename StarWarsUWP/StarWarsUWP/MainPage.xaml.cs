@@ -64,5 +64,17 @@ namespace StarWarsUWP
             }
         }
 
+
+        private void DownButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectedMovie.Rating -= 0.5;
+            
+        }
+
+        private void UpButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectedMovie.Rating += 0.5;
+            
+        }
     }
 }

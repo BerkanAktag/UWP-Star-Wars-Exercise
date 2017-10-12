@@ -13,6 +13,7 @@ namespace StarWars.Domain
         private string _director { get; set; }
         private string _producer { get; set; }
         private DateTime _releasedate { get; set; }
+        private double _rating { get; set; }
 
         public string Title
         {
@@ -62,6 +63,30 @@ namespace StarWars.Domain
             
         }
 
+        public double Rating
+        {
+            get { return _rating; }
+            set
+            {
+                if (value > 10)
+                {
+                    _rating = 10;
+                }
+                else if (value < 0)
+                {
+                    _rating = 0;
+                }
+                else
+                {
+                    _rating = value;
+                }
+                    
+                OnPropertyChanged(nameof(Rating));
+
+            }
+        }
+
+
         [JsonIgnore]
         public virtual ICollection<Planet> Planets { get; set; }
 
@@ -82,5 +107,7 @@ namespace StarWars.Domain
             //    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             //}
         }
+
+        
     }
 }
