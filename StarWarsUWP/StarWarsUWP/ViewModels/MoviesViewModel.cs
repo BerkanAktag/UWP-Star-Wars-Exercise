@@ -59,8 +59,6 @@ namespace StarWarsUWP.ViewModels
             Movies = _repository.GetAllMovies().OrderBy(e => e.EpisodeId).ToList();
             SelectedMovie = Movies.FirstOrDefault(e => e.EpisodeId == 1);
         }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

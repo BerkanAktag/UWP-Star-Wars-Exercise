@@ -12,8 +12,8 @@
     mc:Ignorable="d">
 
 
-    
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="MovieGrid">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="MovieGrid">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -26,8 +26,10 @@
 
                         <Setter Target="MovieImage.Height" Value="500"/>
                         <Setter Target="MovieImage.Width" Value="400"/>
+                        
                         <Setter Target="DetailStackPanel.(RelativePanel.RightOf)" Value="MovieImage" />
-                        <Setter Target="DetailStackPanel.VerticalAlignment" Value="Top"/>
+                        <Setter Target="DetailStackPanel.(RelativePanel.Below)" Value="" />
+                        <!--<Setter Target="DetailStackPanel.VerticalAlignment" Value="Top"/>-->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -40,8 +42,8 @@
 
         <RelativePanel HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="920" Margin="94,0,0,0" Grid.ColumnSpan="2">
             <TextBlock Text="{Binding Path=SelectedMovie.Title,Mode=OneWay}" Margin="25,4,-116,36" Name="MovieTitleTextBlock" FontSize="26"/>
-            <Image Height="250" Width="220" Name="MovieImage" RelativePanel.Below="MovieTitleTextBlock" Source="{Binding SelectedMovie.Title, Converter={StaticResource LocalImageConverter}}" />
-            <StackPanel Height="417" Name="DetailStackPanel" RelativePanel.RightOf="MovieImage"  Width="350" >
+            <Image Height="300" Width="220" Name="MovieImage" RelativePanel.Below="MovieTitleTextBlock" Source="{Binding SelectedMovie.Title, Converter={StaticResource LocalImageConverter}}" />
+            <StackPanel Height="330" Name="DetailStackPanel" RelativePanel.Below="MovieImage" RelativePanel.RightOf=""  Width="350" >
                 <TextBlock Text="Release Date" Margin="-2,0,2.4,0" />
                 <TextBlock Text="{Binding Path=SelectedMovie.ReleaseDate,Converter={StaticResource DateToStringConverter}}" Name="MovieReleaseDateTextBlock" Margin="-2,0,2.4,0" FontSize="20" />
                 <TextBlock Text="Director" Margin="-2,0,2.4,0"></TextBlock>
