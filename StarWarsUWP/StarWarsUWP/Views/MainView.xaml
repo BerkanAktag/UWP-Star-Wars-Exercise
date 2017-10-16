@@ -3,13 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:StarWarsUWP.Views"
+    xmlns:i="http"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="using:StarWars.DAL.Converter"
     xmlns:rating="using:Bratched.Tools.RatingControl"
     xmlns:viewmodel="using:StarWarsUWP.ViewModels"
-    DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=MoviesViewModel}"
-    mc:Ignorable="d">
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MoviesViewModel}"
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
 
 
@@ -52,11 +55,28 @@
                 <TextBlock Text="{Binding Path=SelectedMovie.Producer,Mode=OneWay}" Name="ProducerTextBlock" Margin="2,0,-1.6,0" FontSize="20" />
                 <TextBlock Text="Rating" FontSize="12" Margin="-2,0,2.4,0"/>
                 <TextBlock Text="{Binding SelectedMovie.Rating, Mode=OneWay}" x:Name="RatingTextBlock" Margin="2,0,-1.6,0" FontSize="20" />
-                <rating:RatingControl ItemsCount="10" Value="{Binding Rating,Mode=TwoWay}" Name="MovieRatingControl"/>
+                <rating:RatingControl ItemsCount="10" Value="{Binding SelectedMovie.Rating,Mode=TwoWay}" Name="MovieRatingControl"/>
                 <StackPanel Orientation="Horizontal" Margin="0,10" Name="ControlsStackPanel">
-                    <Button Content="Down" Name="DownButton" HorizontalAlignment="Left" Height="32.7999992370605" Width="65.5999984741211"  Margin="10" />
-                    <Button Content="Up" Name="UpButton" HorizontalAlignment="Left" Height="32.7999992370605" Width="65.5999984741211"  Margin="10" />
-                </StackPanel>
+                    <Button Width="70" Margin="0,0,8,0" Content="Down">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:EventTriggerBehavior EventName="Click">
+                                <Interactions:InvokeCommandAction
+                                    Command="{Binding RateDownCommand}" />
+                            </Interactions:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                    </Button>
+
+                    <Button Width="70" Margin="0,0,8,0" Content="Up">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:EventTriggerBehavior EventName="Click">
+                                <Interactions:InvokeCommandAction
+                                    Command="{Binding RateUpCommand}" />
+                            </Interactions:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                    </Button>
+
+                    <Button Width="110" Content="Show Planets" Command="{Binding ShowPlanetsCommand}" />
+                  </StackPanel>
 
 
             </StackPanel>

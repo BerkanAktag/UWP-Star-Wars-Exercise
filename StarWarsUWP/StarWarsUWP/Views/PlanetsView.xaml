@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="StarWarsUWP.Views.PlanetsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=PlanetsViewModel}"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <FlipView HorizontalAlignment="Left" Height="640" Width="1025" ItemsSource="{Binding Path=Planets,Mode=TwoWay}">
+            <StackPanel>
+                <TextBlock Text="Planets" FontSize="65" Margin="20" />
+                <TextBlock Text="Name" FontSize="28" Margin="25,0,0,0" />
+                <TextBlock Text="{Binding Path=SelectedPlanet.Name}" />
+                <TextBlock Text="Climate" FontSize="28" Margin="25,0,0,0" />
+                <TextBlock Text="{Binding Path=SelectedPlanet.Climate}" />
+                <TextBlock Text="Gravity" FontSize="28" Margin="25,0,0,0"/>
+                <TextBlock Text="{Binding Path=SelectedPlanet.Gravity}" />
+                <TextBlock Text="Terrain" FontSize="28" Margin="25,0,0,0"/>
+                <TextBlock Text="{Binding Path=SelectedPlanet.Terrain}" />
+            </StackPanel>
+        </FlipView>
+
+    </Grid>
+</Page>

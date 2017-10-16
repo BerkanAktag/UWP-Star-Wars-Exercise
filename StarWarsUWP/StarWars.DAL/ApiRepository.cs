@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using StarWars.Domain;
 
 namespace StarWars.DAL
@@ -24,7 +25,7 @@ namespace StarWars.DAL
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public Movie GetMobieByUrl(string url)
+        public Movie GetMovieByUrl(string url)
         {
             var movie = new Movie();
 
@@ -41,16 +42,37 @@ namespace StarWars.DAL
         {
             var url = "api/films";
             var allMovies = new List<Movie>();
-
+            var planet = new Planet();
+            
             HttpResponseMessage response = _httpClient.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
                 allMovies = response.Content.ReadAsAsync<ResultsPage<Movie>>().Result.Results;
+
+            for (int i = 0; i < allMovies.Count; i++)
+            {
+                allMovies[i].Planets = new List<Planet>();
+                for (int j = 0; j < allMovies[i].PlanetUris.Count; j++)
+                {
+                    string planetsUrl = "api/planets/" + allMovies[i].PlanetUris[j].Substring(allMovies[i].PlanetUris[j].Length - 2);
+                    HttpResponseMessage responseMovie = _httpClient.GetAsync(planetsUrl).Result;
+
+                    if (responseMovie.IsSuccessStatusCode)
+                    {
+                        planet = responseMovie.Content.ReadAsAsync<Planet>().Result;
+                        allMovies[i].Planets.Add(planet);
+                    }
+                }
+            }
+
 
             return allMovies;
         }
 
         
+
     }
+
+    
         internal class ResultsPage<T>
         {
             public int Count { get; set; }

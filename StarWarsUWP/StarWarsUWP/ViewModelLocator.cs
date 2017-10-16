@@ -10,10 +10,17 @@ namespace StarWarsUWP
     public class ViewModelLocator
     {
         private static MoviesViewModel moviesViewModel = new MoviesViewModel();
+        private static PlanetsViewModel planetsViewModel = new PlanetsViewModel();
+
+        public static PlanetsViewModel PlanetsViewModel
+        {
+            get => planetsViewModel;
+        }
 
         public static MoviesViewModel MoviesViewModel
         {
-            get { return moviesViewModel; }
+            get => moviesViewModel; 
         }
     }
+
 }

@@ -8,7 +8,7 @@
    
     <Application.Resources>
         <ResourceDictionary>
-            <local:ViewModelLocator x:Key="mainViewModelLocator"></local:ViewModelLocator>
+            <local:ViewModelLocator x:Key="ViewModelLocator"></local:ViewModelLocator>
             <converter:ImageConverter x:Key="LocalImageConverter"></converter:ImageConverter>
             <converter:DateFormatConverter x:Key="DateToStringConverter"></converter:DateFormatConverter>
             <converter:RomanConverter x:Key="LocalRomanConverter"></converter:RomanConverter>

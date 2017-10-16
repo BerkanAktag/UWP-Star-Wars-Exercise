@@ -82,6 +82,7 @@ namespace StarWars.Domain
                 }
                     
                 OnPropertyChanged(nameof(Rating));
+                
 
             }
         }
